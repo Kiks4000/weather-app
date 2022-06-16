@@ -39,6 +39,10 @@ body main {
       -ms-flex-align: center;
           align-items: center;
 }
+body main .sun {
+  width: 50rem;
+  margin-bottom: 1rem;
+}
 body main .container .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -47,12 +51,12 @@ body main .container .row {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 2rem;
 }
 body main .container .row #header h1 {
@@ -60,7 +64,6 @@ body main .container .row #header h1 {
   font-size: 4rem;
   color: #fff;
   text-align: center;
-  margin-bottom: 1rem;
   text-transform: capitalize;
 }
 body main .container .row #box {
@@ -71,15 +74,15 @@ body main .container .row #box {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 3rem;
 }
-body main .container .row #box input {
+body main .container .row #box #cityInput {
   font-family: "Roboto", sans-serif;
   font-size: 5rem;
   color: black;
@@ -87,23 +90,72 @@ body main .container .row #box input {
   border: 1px solid #fff;
   border-radius: 1rem;
 }
-body main .container .row #box button {
+body main .container .row #subBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1.5em;
+}
+body main .container .row #subBtn #btn, body main .container .row #subBtn #clearbtn {
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
   font-weight: bold;
   color: black;
   text-align: center;
-  height: 50%;
   background: #fff;
   border: 1px solid #fff;
   border-radius: 5px;
   padding: 2rem;
+  width: 15rem;
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   justify-self: center;
+  margin-bottom: 2rem;
 }
-body main .container .row #box button:hover {
+body main .container .row #subBtn #btn:hover, body main .container .row #subBtn #clearbtn:hover {
   background: linear-gradient(16deg, rgb(0, 134, 255), rgb(126, 149, 172));
-  color: white;
+  color: #fff;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
+}
+body main .container #output {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2rem;
+}
+body main .container #output .cityCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 15rem;
+  height: 20rem;
+  border: 3px solid #fff;
+  border-radius: 1rem;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  padding: 2.5rem 1rem;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 2rem;
 }/*# sourceMappingURL=style.css.map */

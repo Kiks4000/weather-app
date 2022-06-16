@@ -11,14 +11,16 @@ body{
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        @include flexCenter;
+        .sun{
+            width: 50rem;
+            margin-bottom: 1rem;
+        }
         .container{
             .row{
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                @include flexCenter;
                 gap: 2rem;
                 #header{
                     h1{
@@ -26,17 +28,15 @@ body{
                         font-size: 4rem;
                         color: #fff;
                         text-align: center;
-                        margin-bottom: 1rem;
                         text-transform: capitalize;
                     }
                 }
                 #box{
                     display: flex;
                     flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
+                    @include flexCenter;
                     gap: 3rem;
-                    input{
+                    #cityInput{
                         font-family: 'Roboto', sans-serif;
                         font-size: 5rem;
                         color: black;
@@ -44,27 +44,56 @@ body{
                         border: 1px solid #fff;
                         border-radius: 1rem;
                     }
-                    button{
+                }
+                #subBtn{
+                    display: flex;
+                    gap: 1.5em;
+                    #btn, #clearbtn{
                         font-family: 'Roboto', sans-serif;
                         font-size: 2rem;
                         font-weight: bold;
                         color: black;
                         text-align: center;
-                        height: 50%;
-                        background: #fff;
-                        border: 1px solid #fff;
+                        background: $white;
+                        border: 1px solid $white;
                         border-radius: 5px;
                         padding: 2rem;
+                        width: 15rem;
                         cursor: pointer;
                         transition: all 0.3s ease-in-out;
                         justify-self: center;
+                        margin-bottom: 2rem;
                         &:hover{
                             @include bgGradient;
-                            color: white;
+                            color: $white;
+                            transform: scale(1.15);
                         }
                     }
                 }
             }
+            #output{
+                display: flex;
+                flex-wrap: wrap;
+                @include flexCenter;
+                gap: 2rem;
+                .cityCard{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 15rem;
+                    height: 20rem;
+                    border: 3px solid $white;
+                    border-radius: 1rem;
+                    color: $white;
+                    font-family: Arial, Helvetica, sans-serif;
+                    font-size: 1.6rem;
+                    padding: 2.5rem 1rem;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 2rem;
         }
     }
+}
+}
 }
