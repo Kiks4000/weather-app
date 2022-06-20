@@ -3,97 +3,94 @@
 @import './utils/_variables.scss';
 @import './utils/_mixins.scss';
 
+
 body{
-    @include bgGradient;
-    background: no-repeat cover center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    main{
-        height: 100%;
+    margin: 0;
+    font-family: 'Arial, Helvetica, sans-serif';
+    background: #222;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 120%;
+    .container{
+        background: #000000d0;
+        color: $white;
+        padding: 2rem;
+        border-radius: 30px;
+        width: 100%;
+        max-width: 700px;
+        margin: 1rem;
         display: flex;
         flex-direction: column;
-        @include flexCenter;
-        .sun{
-            width: 50rem;
-            margin-bottom: 1rem;
-        }
-        .container{
-            .row{
-                display: flex;
-                flex-direction: column;
-                @include flexCenter;
-                gap: 2rem;
-                #header{
-                    h1{
-                        font-family: 'Roboto', sans-serif;
-                        font-size: 4rem;
-                        color: #fff;
-                        text-align: center;
-                        text-transform: capitalize;
+        align-items: center;
+        justify-content: center;
+        #box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            #cityInput{
+                font-family: 'Roboto', sans-serif;
+                font-size: 2.5rem;
+                color: black;
+                text-align: center;
+                border: 1px solid #fff;
+                border-radius: 1rem;
+                margin-bottom: 1.5rem;
                     }
-                }
-                #box{
-                    display: flex;
-                    flex-direction: column;
-                    @include flexCenter;
-                    gap: 3rem;
-                    #cityInput{
-                        font-family: 'Roboto', sans-serif;
-                        font-size: 5rem;
-                        color: black;
-                        text-align: center;
-                        border: 1px solid #fff;
-                        border-radius: 1rem;
-                    }
-                }
-                #subBtn{
-                    display: flex;
-                    gap: 1.5em;
-                    #btn, #clearbtn{
-                        font-family: 'Roboto', sans-serif;
-                        font-size: 2rem;
-                        font-weight: bold;
-                        color: black;
-                        text-align: center;
-                        background: $white;
-                        border: 1px solid $white;
-                        border-radius: 5px;
-                        padding: 2rem;
-                        width: 15rem;
-                        cursor: pointer;
-                        transition: all 0.3s ease-in-out;
-                        justify-self: center;
-                        margin-bottom: 2rem;
-                        &:hover{
-                            @include bgGradient;
-                            color: $white;
-                            transform: scale(1.15);
-                        }
-                    }
-                }
             }
-            #output{
-                display: flex;
-                flex-wrap: wrap;
-                @include flexCenter;
-                gap: 2rem;
-                .cityCard{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: space-between;
-                    width: 15rem;
-                    height: 20rem;
-                    border: 3px solid $white;
-                    border-radius: 1rem;
-                    color: $white;
-                    font-family: Arial, Helvetica, sans-serif;
-                    font-size: 1.6rem;
-                    padding: 2.5rem 1rem;
-                    text-align: center;
-                    font-weight: bold;
-                    margin-bottom: 2rem;
+        }
+    }
+
+#subBtn{
+    display: flex;
+    justify-content: center;
+    gap: 4em;
+    #btn, #clearbtn{
+        background: #7c7c7c2b;
+        color: white;
+        border: 1px solid #7c7c7c2b;
+        border-radius: 5px;
+        padding: 1rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.5rem;
+        transition: ease-in-out 0.2s;
+        cursor: pointer;
+        &:hover{
+            transform: scale(1.3);
         }
     }
 }
-}
+
+#output{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    .currentCityCard{
+        color: $white;
+        padding: 2rem;
+        border-radius: 30px;
+        max-width: 500px;
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .fiveDaysContainer{
+        display: flex;
+        flex-direction: row;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.5rem;
+        color: $white;
+        padding: 2rem;
+        justify-content: space-between;
+    }
 }

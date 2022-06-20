@@ -2,13 +2,15 @@
 
 let input = document.getElementById('cityInput');
 let button = document.getElementById('btn');
-let body = document.querySelector('body');
+let page = document.querySelector('body');
 let output = document.getElementById('output');
 let clearBtn = document.getElementById('clearbtn');
 let nbClick=0;
 let nbClickMax=2;
 let apiKey = '4c0665f89ed0153262e09818da099b8d';
-let city = input.value;
+let unsplashKey = '4wCdXsoxO0JFDpjy9xDNK3UqH1gzff2PvbNevoUxIFk';
+
+page.style.backgroundImage = 'url(https://source.unsplash.com/1600x900/?landscape)';
 
 /* ----- Functions autofocus & fill the input ----- */
 
@@ -24,6 +26,162 @@ input.addEventListener('blur', function() {
         input.value = 'Enter a city';
     }
     }
+);
+
+/* ----- Get the weather ----- */
+
+button.addEventListener('click', function() {
+    let city = input.value;
+    let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
+
+    /* ----- Change the background depending on the city input ----- */
+
+function changeBackground(city) {
+    let unsplashUrl = 'https://api.unsplash.com/search/photos?query=' + city + '&client_id=' + unsplashKey;
+    fetch(unsplashUrl)
+        .then(function(response) {
+            return response.json();
+        }
+        )
+        .then(function(data) {
+            let randomIndex = Math.floor(Math.random() * data.results.length);
+            let randomPhoto = data.results[randomIndex];
+            let photoUrl = randomPhoto.urls.regular;
+
+            page.style.backgroundImage = `url(${photoUrl})`;
+
+        }
+        )
+        .catch(function(error) {
+            console.log(error);
+        }
+        );
+}
+
+changeBackground(city);
+
+    fetch(url)
+        .then(function(response) {
+            return response.json();
+        }
+        )
+        .then(function(data) {
+            /* ----- Create variables ----- */
+            let weather = data.weather[0].main;
+            let temp = data.main.temp;
+            let tempCelsius = temp - 273.15;
+            let tempFahrenheit = temp * 9/5 - 459.67;
+            let tempCelsiusRound = Math.round(tempCelsius);
+            let tempFahrenheitRound = Math.round(tempFahrenheit);
+            let city = data.name;
+            let country = data.sys.country;
+            let icon = data.weather[0].icon;
+            let longitude = data.coord.lon;
+            let latitude = data.coord.lat;
+            let oneCallAPI = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&lang=en&exclude=minutely,alerts&appid=${apiKey}`;
+            let iconUrl = 'http://openweathermap.org/img/w/' + icon + '.png';
+            let iconImg = document.createElement('img');
+
+            iconImg.src = iconUrl;
+            iconImg.alt = weather;
+
+            let iconImgContainer = document.createElement('div');
+            iconImgContainer.classList.add('iconImgContainer');
+            iconImgContainer.appendChild(iconImg);
+
+            let cityContainer = document.createElement('div');
+            cityContainer.classList.add('cityContainer');
+            cityContainer.innerHTML = city + ', ' + country;
+
+            let weatherContainer = document.createElement('div');
+            weatherContainer.classList.add('weatherContainer');
+            weatherContainer.innerHTML = weather;
+
+            let tempContainer = document.createElement('div');
+            tempContainer.classList.add('tempContainer');
+            tempContainer.innerHTML = tempCelsiusRound + '&deg;C / ' + tempFahrenheitRound + '&deg;F';
+
+            let currentCityCard = document.createElement('div');
+            currentCityCard.classList.add('currentCityCard');
+
+            currentCityCard.appendChild(cityContainer);
+            currentCityCard.appendChild(weatherContainer);
+            currentCityCard.appendChild(tempContainer);
+            currentCityCard.appendChild(iconImgContainer);
+
+            output.appendChild(currentCityCard);
+
+            return fetch(oneCallAPI)
+        }
+        )
+        .then(function(response) {
+            return response.json();
+        }
+        )
+        .then(function(data) {
+            let fiveDaysContainer = document.createElement('div');
+            fiveDaysContainer.classList.add('fiveDaysContainer');
+            output.appendChild(fiveDaysContainer);
+            
+            for (let [index, element] of data.daily.entries()) {
+                if (index < 6){
+                    // console.log(index, element);
+                    let date = element.dt;
+                    let dateString = new Date(date * 1000);
+                    let dateStringDay = dateString.toDateString();
+                    let icon = element.weather[0].icon;
+                    let iconUrl = 'http://openweathermap.org/img/w/' + icon + '.png';
+                    let iconImg = document.createElement('img');
+                    let tempMin = element.temp.min;
+                    let tempMax = element.temp.max;
+                    let humidity = element.humidity;
+                    let description = element.weather[0].description;
+    
+                    iconImg.src = iconUrl;
+                    iconImg.alt = description;
+    
+                    let iconImgContainer = document.createElement('div');
+                    iconImgContainer.classList.add('iconImgContainer');
+                    iconImgContainer.appendChild(iconImg);
+    
+                    let dateContainer = document.createElement('div');
+                    dateContainer.classList.add('dateContainer');
+                    dateContainer.innerHTML = dateStringDay;
+    
+                    let tempMinContainer = document.createElement('div');
+                    tempMinContainer.classList.add('tempMinContainer');
+                    tempMinContainer.innerHTML = tempMin + '&deg;C';
+    
+                    let tempMaxContainer = document.createElement('div');
+                    tempMaxContainer.classList.add('tempMaxContainer');
+                    tempMaxContainer.innerHTML = tempMax + '&deg;C';
+    
+                    let humidityContainer = document.createElement('div');
+                    humidityContainer.classList.add('humidityContainer');
+                    humidityContainer.innerHTML = humidity + '%';
+    
+                    let descriptionContainer = document.createElement('div');
+                    descriptionContainer.classList.add('descriptionContainer');
+                    descriptionContainer.innerHTML = description;
+    
+                    let cityCard = document.createElement('div');
+                    cityCard.classList.add('cityCard');
+    
+                    cityCard.appendChild(dateContainer);
+                    cityCard.appendChild(tempMinContainer);
+                    cityCard.appendChild(tempMaxContainer);
+                    cityCard.appendChild(humidityContainer);
+                    cityCard.appendChild(descriptionContainer);
+                    cityCard.appendChild(iconImgContainer);
+    
+                    fiveDaysContainer.appendChild(cityCard);
+
+                }}})
+        .catch(function(error) {
+            console.log(error);
+        }
+        );
+}
 );
 
 /* Press Enter to get the weather */
@@ -52,139 +210,3 @@ if(nbClick>=nbClickMax)
         document.getElementById('btn').disabled=true;
     }
 }
-
-/* call the geocoding API */
-function getGeocoding(city) {
-    let url = 'https://api.opencage.com/geocode/v1/json?q=' + city + '&key=' + apiKey;
-    return fetch(url)
-        .then(function(response) {
-            return response.json();
-        }
-        )
-        .catch(function(error) {
-            console.log(error);
-        }
-        );
-}
-
-/* call the weather API  that displays the weather of the city for the next 5 days */
-function getWeather(lat, lng) {
-    let url = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lng + '&units=metric&appid=' + apiKey;
-    return fetch(url)
-        .then(function(response) {
-            return response.json();
-        }
-        )
-        .catch(function(error) {
-            console.log(error);
-        }
-        );
-}
-
-/* display the weather of the city in a card in the output */
-function displayWeather(weather) {
-    let cityContainer = document.createElement('div');
-    cityContainer.classList.add('cityContainer');
-
-    let weatherContainer = document.createElement('div');
-    weatherContainer.classList.add('weatherContainer');
-
-    let tempContainer = document.createElement('div');
-    tempContainer.classList.add('tempContainer');
-
-    let iconImgContainer = document.createElement('div');
-    iconImgContainer.classList.add('iconImgContainer');
-
-    let cityCard = document.createElement('div');
-    cityCard.classList.add('cityCard');
-
-    let cityName = document.createElement('h2');
-    cityName.classList.add('cityName');
-    cityName.innerHTML = weather.city.name;
-
-    let temp = document.createElement('p');
-    temp.classList.add('temp');
-    temp.innerHTML = weather.list[0].main.temp + '°C';
-
-    let iconImg = document.createElement('img');
-    iconImg.classList.add('iconImg');
-    iconImg.src = 'http://openweathermap.org/img/wn/' + weather.list[0].weather[0].icon + '.png';
-
-    let weatherDesc = document.createElement('p');
-    weatherDesc.classList.add('weatherDesc');
-    weatherDesc.innerHTML = weather.list[0].weather[0].description;
-
-    let weatherDate = document.createElement('p');
-    weatherDate.classList.add('weatherDate');
-    weatherDate.innerHTML = 'Date: ' + weather.list[0].dt_txt;
-
-    let weatherTemp = document.createElement('p');
-    weatherTemp.classList.add('weatherTemp');
-    weatherTemp.innerHTML = 'Temperature: ' + weather.list[0].main.temp + '°C';
-
-    let weatherHumidity = document.createElement('p');
-    weatherHumidity.classList.add('weatherHumidity');
-    weatherHumidity.innerHTML = 'Humidity: ' + weather.list[0].main.humidity + '%';
-
-    let weatherWind = document.createElement('p');
-    weatherWind.classList.add('weatherWind');
-    weatherWind.innerHTML = 'Wind: ' + weather.list[0].wind.speed + 'km/h';
-
-    let weatherClouds = document.createElement('p');
-    weatherClouds.classList.add('weatherClouds');
-    weatherClouds.innerHTML = 'Clouds: ' + weather.list[0].clouds.all + '%';
-
-    let weatherPressure = document.createElement('p');
-    weatherPressure.classList.add('weatherPressure');
-    weatherPressure.innerHTML = 'Pressure: ' + weather.list[0].main.pressure + 'hPa';
-
-    let weatherSunrise = document.createElement('p');
-    weatherSunrise.classList.add('weatherSunrise');
-    weatherSunrise.innerHTML = 'Sunrise: ' + weather.city.sunrise;
-
-    let weatherSunset = document.createElement('p');
-    weatherSunset.classList.add('weatherSunset');
-    weatherSunset.innerHTML = 'Sunset: ' + weather.city.sunset;
-
-    cityContainer.appendChild(cityCard);
-    cityCard.appendChild(cityName);
-    cityCard.appendChild(tempContainer);
-    tempContainer.appendChild(temp);
-    tempContainer.appendChild(iconImgContainer);
-    iconImgContainer.appendChild(iconImg);
-    cityCard.appendChild(weatherContainer);
-    weatherContainer.appendChild(weatherDesc);
-    weatherContainer.appendChild(weatherDate);
-    weatherContainer.appendChild(weatherTemp);
-    weatherContainer.appendChild(weatherHumidity);
-    weatherContainer.appendChild(weatherWind);
-    weatherContainer.appendChild(weatherClouds);
-    weatherContainer.appendChild(weatherPressure);
-    weatherContainer.appendChild(weatherSunrise);
-    weatherContainer.appendChild(weatherSunset);
-
-    output.appendChild(cityContainer);
-}
-
-/* ----- Get the weather of the city ----- */
-
-button.addEventListener('click', function() {
-    let city = input.value;
-    getGeocoding(city)
-        .then(function(response) {
-            let lat = response.results[0].geometry.lat;
-            let lng = response.results[0].geometry.lng;
-            return getWeather(lat, lng);
-        }
-        )
-        .then(function(response) {
-            displayWeather(response);
-            compter();
-        }
-        )
-        .catch(function(error) {
-            console.log(error);
-        }
-        );
-}
-);
