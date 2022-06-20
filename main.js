@@ -66,7 +66,9 @@ changeBackground(city);
         }
         )
         .then(function(data) {
+
             /* ----- Create variables ----- */
+            
             let weather = data.weather[0].main;
             let temp = data.main.temp;
             let tempCelsius = temp - 273.15;
@@ -125,7 +127,6 @@ changeBackground(city);
             
             for (let [index, element] of data.daily.entries()) {
                 if (index < 6){
-                    // console.log(index, element);
                     let date = element.dt;
                     let dateString = new Date(date * 1000);
                     let dateStringDay = dateString.toDateString();
@@ -150,15 +151,15 @@ changeBackground(city);
     
                     let tempMinContainer = document.createElement('div');
                     tempMinContainer.classList.add('tempMinContainer');
-                    tempMinContainer.innerHTML = tempMin + '&deg;C';
+                    tempMinContainer.innerHTML = 'Min : ' + tempMin + '&deg;C';
     
                     let tempMaxContainer = document.createElement('div');
                     tempMaxContainer.classList.add('tempMaxContainer');
-                    tempMaxContainer.innerHTML = tempMax + '&deg;C';
+                    tempMaxContainer.innerHTML = 'Max : ' + tempMax + '&deg;C';
     
                     let humidityContainer = document.createElement('div');
                     humidityContainer.classList.add('humidityContainer');
-                    humidityContainer.innerHTML = humidity + '%';
+                    humidityContainer.innerHTML = 'Humidity : ' + humidity + '%';
     
                     let descriptionContainer = document.createElement('div');
                     descriptionContainer.classList.add('descriptionContainer');
