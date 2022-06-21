@@ -35,7 +35,7 @@ You need to clean the search bar before typing a new 2 city.
 
 [Github](https://github.com/Kiks4000)
 [LinkedIn](https://www.linkedin.com/in/kevinkiks/)
-[Twitter](https://twitter.com/KiksOnTwitc
+[Twitter](https://twitter.com/KiksOnTwitch)
 
 [OpenWeatherMap](https://openweathermap.org/)
 [Unsplash](https://unsplash.com/)
