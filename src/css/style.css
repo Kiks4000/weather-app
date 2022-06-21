@@ -19,9 +19,11 @@ a:link {
 }
 
 body {
-  background: #222;
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-color: #bbb;
 }
 
 main {
@@ -47,6 +49,9 @@ main .container {
   border-radius: 30px;
   width: 40%;
   margin: 1rem;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
