@@ -1,4 +1,4 @@
-# WELCOME IL OUR BRAND NEW WEATHER APP !
+# WELCOME TO OUR BRAND NEW WEATHER APP !
 
 ## **With an improved design**
 
