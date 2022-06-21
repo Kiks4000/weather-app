@@ -5,30 +5,28 @@
 
 
 body{
+    background: #222;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
     font-family: 'Arial, Helvetica, sans-serif';
-    background: #222;
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-size: 120%;
     .container{
         background: #000000d0;
         color: $white;
         padding: 2rem;
         border-radius: 30px;
-        width: 100%;
-        max-width: 700px;
+        width: 40%;
         margin: 1rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: auto;
         #box{
             display: flex;
             flex-direction: column;
@@ -37,12 +35,13 @@ body{
             gap: 3rem;
             #cityInput{
                 font-family: 'Roboto', sans-serif;
-                font-size: 2.5rem;
+                font-size: 25px;
                 color: black;
                 text-align: center;
                 border: 1px solid #fff;
                 border-radius: 1rem;
                 margin-bottom: 1.5rem;
+                width: 80%;
                     }
             }
         }
@@ -59,7 +58,7 @@ body{
         border-radius: 5px;
         padding: 1rem;
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 1.5rem;
+        font-size: 15px;
         transition: ease-in-out 0.2s;
         cursor: pointer;
         &:hover{
@@ -87,21 +86,21 @@ body{
         font-family: Arial, Helvetica, sans-serif;
         font-size: 1.5rem;
         .cityContainer{
-            font-size: 2.5rem;
+            font-size: 25px;
             font-weight: bold;
             color: $white;
             text-align: center;
             margin-bottom: 1rem;
         }
         .weatherContainer{
-            font-size: 1.5rem;
+            font-size: 25px;
             font-weight: bold;
             color: $white;
             text-align: center;
             margin-bottom: 1rem;
         }
         .tempContainer{
-            font-size: 1.5rem;
+            font-size: 25px;
             font-weight: bold;
             color: $white;
             text-align: center;
@@ -119,7 +118,7 @@ body{
         gap: 4rem;
         justify-content: center;
         font-family: Arial, Helvetica, sans-serif;
-        font-size: 1.5rem;
+        font-size: 15px;
         color: $white;
         padding: 2rem;
         text-align: center;
@@ -127,35 +126,35 @@ body{
             padding: 1rem;
             margin-top: -4rem;
             .dateContainer{
-                font-size: 1.5rem;
+                font-size: 15px;
                 font-weight: bold;
                 color: $white;
                 text-align: justify center;
                 margin-bottom: 0.5rem;
             }
             .tempMinContainer{
-                font-size: 1.5rem;
+                font-size: 15px;
                 font-weight: bold;
                 color: $white;
                 text-align: justify center;
                 margin-bottom: 0.5rem;
             }
             .tempMaxContainer{
-                font-size: 1.5rem;
+                font-size: 15px;
                 font-weight: bold;
                 color: $white;
                 text-align: justify center;
                 margin-bottom: 0.5rem;
             }
             .humidityContainer{
-                font-size: 1.5rem;
+                font-size: 15px;
                 font-weight: bold;
                 color: $white;
                 text-align: justify center;
                 margin-bottom: 0.5rem;
             }
             .descriptionContainer{
-                font-size: 1.5rem;
+                font-size: 15px;
                 font-weight: bold;
                 color: $white;
                 text-align: justify center;

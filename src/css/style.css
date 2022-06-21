@@ -19,6 +19,12 @@ a:link {
 }
 
 body {
+  background: #222;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -32,21 +38,14 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100vh;
-  margin: 0;
   font-family: "Arial, Helvetica, sans-serif";
-  background: #222;
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-size: 120%;
 }
-body .container {
+main .container {
   background: rgba(0, 0, 0, 0.8156862745);
   color: #fff;
   padding: 2rem;
   border-radius: 30px;
-  width: 100%;
-  max-width: 700px;
+  width: 40%;
   margin: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -61,9 +60,8 @@ body .container {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: auto;
 }
-body .container #box {
+main .container #box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,14 +77,15 @@ body .container #box {
           justify-content: center;
   gap: 3rem;
 }
-body .container #box #cityInput {
+main .container #box #cityInput {
   font-family: "Roboto", sans-serif;
-  font-size: 2.5rem;
+  font-size: 25px;
   color: black;
   text-align: center;
   border: 1px solid #fff;
   border-radius: 1rem;
   margin-bottom: 1.5rem;
+  width: 80%;
 }
 
 #subBtn {
@@ -105,7 +104,7 @@ body .container #box #cityInput {
   border-radius: 5px;
   padding: 1rem;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
+  font-size: 15px;
   -webkit-transition: ease-in-out 0.2s;
   transition: ease-in-out 0.2s;
   cursor: pointer;
@@ -152,21 +151,21 @@ body .container #box #cityInput {
   font-size: 1.5rem;
 }
 #output .currentCityCard .cityContainer {
-  font-size: 2.5rem;
+  font-size: 25px;
   font-weight: bold;
   color: #fff;
   text-align: center;
   margin-bottom: 1rem;
 }
 #output .currentCityCard .weatherContainer {
-  font-size: 1.5rem;
+  font-size: 25px;
   font-weight: bold;
   color: #fff;
   text-align: center;
   margin-bottom: 1rem;
 }
 #output .currentCityCard .tempContainer {
-  font-size: 1.5rem;
+  font-size: 25px;
   font-weight: bold;
   color: #fff;
   text-align: center;
@@ -193,7 +192,7 @@ body .container #box #cityInput {
       -ms-flex-pack: center;
           justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
+  font-size: 15px;
   color: #fff;
   padding: 2rem;
   text-align: center;
@@ -203,35 +202,35 @@ body .container #box #cityInput {
   margin-top: -4rem;
 }
 #output .fiveDaysContainer .cityCard .dateContainer {
-  font-size: 1.5rem;
+  font-size: 15px;
   font-weight: bold;
   color: #fff;
   text-align: justify center;
   margin-bottom: 0.5rem;
 }
 #output .fiveDaysContainer .cityCard .tempMinContainer {
-  font-size: 1.5rem;
+  font-size: 15px;
   font-weight: bold;
   color: #fff;
   text-align: justify center;
   margin-bottom: 0.5rem;
 }
 #output .fiveDaysContainer .cityCard .tempMaxContainer {
-  font-size: 1.5rem;
+  font-size: 15px;
   font-weight: bold;
   color: #fff;
   text-align: justify center;
   margin-bottom: 0.5rem;
 }
 #output .fiveDaysContainer .cityCard .humidityContainer {
-  font-size: 1.5rem;
+  font-size: 15px;
   font-weight: bold;
   color: #fff;
   text-align: justify center;
   margin-bottom: 0.5rem;
 }
 #output .fiveDaysContainer .cityCard .descriptionContainer {
-  font-size: 1.5rem;
+  font-size: 15px;
   font-weight: bold;
   color: #fff;
   text-align: justify center;
