@@ -7,10 +7,12 @@ let output = document.getElementById('output');
 let clearBtn = document.getElementById('clearbtn');
 let nbClick=0;
 let nbClickMax=2;
-let apiKey = '4c0665f89ed0153262e09818da099b8d';
-let unsplashKey = '4wCdXsoxO0JFDpjy9xDNK3UqH1gzff2PvbNevoUxIFk';
+
+/* ----- Automatic Background ----- */
 
 page.style.backgroundImage = 'url(https://source.unsplash.com/1600x900/?landscape)';
+
+/* ----- Functions ----- */
 
 /* ----- Functions autofocus & fill the input ----- */
 
@@ -28,15 +30,43 @@ input.addEventListener('blur', function() {
     }
 );
 
+/* Press Enter to get the weather */
+
+input.addEventListener('keyup', function(event) {
+    if (event.key === "Enter") {
+        button.click();
+    }
+});
+
+/* ----- Clear the output ----- */
+
+clearBtn.addEventListener('click', function() {
+    output.innerHTML = '';
+    nbClick=0;
+    document.getElementById('btn').disabled=false;
+});
+
+/* ----- limitation du nombre de clic ----- */
+
+function compter(){
+    nbClick++;
+    if(nbClick>=nbClickMax)
+        {
+            alert('You can only choose ' + nbClickMax + ' cities');
+            document.getElementById('btn').disabled=true;
+        }
+}
+
 /* ----- Get the weather ----- */
 
 button.addEventListener('click', function() {
     let city = input.value;
+    let apiKey = '4c0665f89ed0153262e09818da099b8d';
     let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + apiKey;
 
     /* ----- Change the background depending on the city input ----- */
-
 function changeBackground(city) {
+    let unsplashKey = '4wCdXsoxO0JFDpjy9xDNK3UqH1gzff2PvbNevoUxIFk';
     let unsplashUrl = 'https://api.unsplash.com/search/photos?query=' + city + '&client_id=' + unsplashKey;
     fetch(unsplashUrl)
         .then(function(response) {
@@ -59,6 +89,8 @@ function changeBackground(city) {
 }
 
 changeBackground(city);
+
+/* ----- Call the API ----- */
 
     fetch(url)
         .then(function(response) {
@@ -185,29 +217,11 @@ changeBackground(city);
 }
 );
 
-/* Press Enter to get the weather */
+/* ----- Reset input after submit */
 
-input.addEventListener('keyup', function(event) {
-    if (event.key === "Enter") {
-        button.click();
-    }
-});
-
-/* ----- Clear the output ----- */
-
-clearBtn.addEventListener('click', function() {
-    output.innerHTML = '';
-    nbClick=0;
-    document.getElementById('btn').disabled=false;
-});
-
-/* ----- limitation du nombre de clic ----- */
-
-function compter(){
-nbClick++;
-if(nbClick>=nbClickMax)
-    {
-        alert('You can only choose ' + nbClickMax + ' cities');
-        document.getElementById('btn').disabled=true;
-    }
+let resetInput = function() {
+    input.value = '';
 }
+
+button.addEventListener('click', resetInput);
+clearBtn.addEventListener('click', resetInput);
