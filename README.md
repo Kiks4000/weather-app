@@ -31,12 +31,14 @@ You need to clean the search bar before typing a new 2 city.
 
 #### Links
 
-    - [Github](https://github.com/Kiks4000)
-    - [LinkedIn](https://www.linkedin.com/in/kevinkiks/)
-    - [Twitter](https://twitter.com/KiksOnTwitch)
+[App's URL](https://kiks4000.github.io/weather-app/)
 
-    - [OpenWeatherMap](https://openweathermap.org/)
-    - [Unsplash](https://unsplash.com/)
+[Github](https://github.com/Kiks4000)
+[LinkedIn](https://www.linkedin.com/in/kevinkiks/)
+[Twitter](https://twitter.com/KiksOnTwitc
+
+[OpenWeatherMap](https://openweathermap.org/)
+[Unsplash](https://unsplash.com/)
 
 ##### Thanks for reading !
 ##### Weather App is a project made for BeCode.
